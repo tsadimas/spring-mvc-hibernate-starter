@@ -26,4 +26,4 @@ Set the default JRE runtime to be Java 8. To accomplish this, right click the pr
 
 To fix the errors in jsp files, you should again right click the project, and in properties go to _Targeted Runtimes_ and select the Apache Tomcat that is connected to your eclipse workspace.
 
-![facets](screenshots/target _runtime.png "Target Runtime")
+![facets](screenshots/target_runtime.png "Target Runtime")
