@@ -22,8 +22,8 @@ and select _Dynamic Web Module_ from the facets list.
 
 Set the default JRE runtime to be Java 8. To accomplish this, right click the project and in _Java Build Path_, in Libraries Tab edit the _JRE System Library_ to point to your Java 8 runtime (setting the appropriate value to Alternate JRE).
 
-![facets](screenshots/jre.png "JRE config")
+![facets](screenshots/jre.jpg "JRE config")
 
 To fix the errors in jsp files, you should again right click the project, and in properties go to _Targeted Runtimes_ and select the Apache Tomcat that is connected to your eclipse workspace.
 
-![facets](screenshots/target_runtime.png "Target Runtime")
+![Target Runtime](screenshots/target_runtime.png "Target Runtime")
