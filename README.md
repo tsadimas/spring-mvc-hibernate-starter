@@ -10,6 +10,10 @@ the project url is
 
 when the prompt to select the kind of project appears, select *Import as general project*
 
+
+![alt text](screenshots/import.png "Import into Eclipse")
+
+
 Next, you should convert the current project to Dynamic Web project.
 To accomplish this, you should right-click the project and in properties go to *Project Facets*
 and select _Dynamic Web Module_ from the facets list.
