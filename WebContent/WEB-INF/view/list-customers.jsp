@@ -1,28 +1,15 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html>
-<html>
-<head>
-<title>List Customers</title>
-<!-- reference our style sheet -->
-<link type="text/css" rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/style.css" />
-</head>
-<body>
-	<div id="wrapper">
-		<div id="header">
-			<h2>CRM - Customer Relationship Manager</h2>
-		</div>
-	</div>
 
-	<div id="container">
-		<div id="content">
+
+		<div class="ui segment">
+			<h3>List of Customers</h3>
+
 			<!--  add our html table here -->
-			<table>
-				<tr>
+			<table class="ui celled  striped table">
+				<thead>
 					<th>First Name</th>
 					<th>Last Name</th>
 					<th>Email</th>
-				</tr>
+				</thead>
 				<!-- loop over and print our customers -->
 				<c:forEach var="tempCustomer" items="${customers}">
 
@@ -34,7 +21,3 @@
 				</c:forEach>
 			</table>
 		</div>
-	</div>
-
-</body>
-</html>

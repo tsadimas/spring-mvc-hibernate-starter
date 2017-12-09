@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import gr.hua.dit.entity.Customer;
@@ -28,7 +30,28 @@ public class CustomerController {
 		// add the customers to the model
 		model.addAttribute("customers",customers);
 		
+		// add page title
+		model.addAttribute("pageTitle", "List Customers");
 		return "list-customers";
+	}
+	
+	@GetMapping("/showAddForm")
+	public String showAddForm(Model model) {
+		// create model attribute to get form data
+		Customer customer = new Customer();
+		model.addAttribute("customer", customer);
+		
+		// add page title
+		model.addAttribute("pageTitle", "Add Customer");
+		return "customer-form";
+	}
+	
+	@PostMapping("/saveCustomer")
+	public String saveCustomer(@ModelAttribute("customer") Customer customer) {
+		// save the customer using the service
+		customerService.saveCustomer(customer);
+		
+		return "redirect:/customer/list";
 	}
 
 }
