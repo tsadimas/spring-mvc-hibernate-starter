@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -33,6 +34,16 @@ public class CustomerController {
 		// add page title
 		model.addAttribute("pageTitle", "List Customers");
 		return "list-customers";
+	}
+	
+	@GetMapping("/{id}")
+	public String getCustomer(Model model, @PathVariable("id") int id) {
+		// get the customer
+		Customer customer = customerService.getCustomer(id);
+		
+		model.addAttribute("customer", customer);
+		
+		return "customer-form";
 	}
 	
 	@GetMapping("/showAddForm")
