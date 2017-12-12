@@ -16,28 +16,25 @@ import gr.hua.dit.service.CustomerService;
 @RestController
 @RequestMapping("/api/customer")
 public class CustomerApiController {
-	
-	
+
 	@Autowired
 	private CustomerService customerService;
-	
-	@RequestMapping(value="/{id}", method=RequestMethod.GET,
-			produces = {"application/json","application/xml"})
+
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = { "application/json", "application/xml" })
 	public Customer getCustomer(@PathVariable("id") int id) {
-		
+
 		Customer customer = customerService.getCustomer(id);
 		System.out.println("customer :" + customer);
-	
+
 		return customer;
 	}
-	
-	@RequestMapping(value="/all", method=RequestMethod.GET,
-			produces = {"application/json","application/xml"})
+
+	@RequestMapping(value = "/all", method = RequestMethod.GET, produces = { "application/json", "application/xml" })
 	public List<Customer> getCustomers() {
-		
+
 		List<Customer> customers = customerService.getCustomers();
 		System.out.println("customers :" + customers);
-	
+
 		return customers;
 	}
 
