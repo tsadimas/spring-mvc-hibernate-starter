@@ -1,15 +1,29 @@
 package gr.hua.dit.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
+
+@XmlRootElement(name = "Customer")
 @Entity
 @Table(name = "customer")
-public class Customer {
+public class Customer implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4310661683443846471L;
+
+	/**
+	 * 
+	 */
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,6 +41,13 @@ public class Customer {
 	
 	public Customer() {
 		
+	}
+
+	public Customer(String firstName, String lastName, String email) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
 	}
 
 	public int getId() {
