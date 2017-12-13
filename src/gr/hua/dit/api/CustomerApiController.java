@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import gr.hua.dit.entity.Customer;
+import gr.hua.dit.entity.CustomerList;
 import gr.hua.dit.service.CustomerService;
 
 @RestController
@@ -20,6 +21,9 @@ public class CustomerApiController {
 	@Autowired
 	private CustomerService customerService;
 
+	@Autowired
+	private CustomerList customerList;
+	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = { "application/json", "application/xml" })
 	public Customer getCustomer(@PathVariable("id") int id) {
 
@@ -30,12 +34,12 @@ public class CustomerApiController {
 	}
 
 	@RequestMapping(value = "/all", method = RequestMethod.GET, produces = { "application/json", "application/xml" })
-	public List<Customer> getCustomers() {
+	public CustomerList getCustomers() {
 
 		List<Customer> customers = customerService.getCustomers();
 		System.out.println("customers :" + customers);
-
-		return customers;
+		this.customerList.setCustomerList(customers);
+		return this.customerList;
 	}
 
 }
