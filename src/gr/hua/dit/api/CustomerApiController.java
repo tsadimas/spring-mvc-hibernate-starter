@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,7 +34,7 @@ public class CustomerApiController {
 
 		return customer;
 	}
-
+	
 	@RequestMapping(value = "/all", method = RequestMethod.GET, produces = { "application/json", "application/xml" })
 	public CustomerList getCustomers() {
 
@@ -51,5 +52,13 @@ public class CustomerApiController {
 		return customer;
 
 	}
+
+	@RequestMapping(value = "/jsonadd", method = RequestMethod.POST,  produces = { "application/json", "application/xml" })
+	public Customer createCustomerfromJson(@RequestBody Customer customer) {
+		customerService.saveCustomer(customer);
+		return customer;
+	}
+	
+	
 
 }
