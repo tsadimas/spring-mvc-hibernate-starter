@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import gr.hua.dit.entity.Customer;
@@ -23,7 +24,7 @@ public class CustomerApiController {
 
 	@Autowired
 	private CustomerList customerList;
-	
+
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = { "application/json", "application/xml" })
 	public Customer getCustomer(@PathVariable("id") int id) {
 
@@ -40,6 +41,15 @@ public class CustomerApiController {
 		System.out.println("customers :" + customers);
 		this.customerList.setCustomerList(customers);
 		return this.customerList;
+	}
+
+	@RequestMapping(value = "/add", method = RequestMethod.POST, produces = { "application/json", "application/xml" })
+	public Customer createCustomer(@RequestParam("firstName") String firstName,
+			@RequestParam("lastName") String lastName, @RequestParam("email") String email) {
+		Customer customer = new Customer(firstName, lastName, email);
+		customerService.saveCustomer(customer);
+		return customer;
+
 	}
 
 }
