@@ -3,6 +3,8 @@ package gr.hua.dit.api;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,6 +35,12 @@ public class CustomerApiController {
 		System.out.println("customer :" + customer);
 
 		return customer;
+	}
+
+	@RequestMapping(value="/delete/{id}", method= RequestMethod.DELETE, produces = { "application/json", "application/xml" })
+	public ResponseEntity deleteCustomer(@PathVariable("id") int id) {
+		customerService.deleteCustomer(id);
+		return new ResponseEntity(HttpStatus.OK);
 	}
 	
 	@RequestMapping(value = "/all", method = RequestMethod.GET, produces = { "application/json", "application/xml" })
