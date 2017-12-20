@@ -18,9 +18,12 @@
 				<td>${tempCustomer.firstName}</td>
 				<td>${tempCustomer.lastName}</td>
 				<td>${tempCustomer.email}</td>
-				<td><input type="submit" id="${tempCustomer.id}"
-					name="deleteCustomer" value="Delete"> <a
-					href="<c:url value="/customer/${tempCustomer.id}"></c:url>">View</a>
+				<td><button type="submit" id="${tempCustomer.id}"
+					name="deleteCustomer"><i class="remove user icon"></i>
+					 Delete</button>
+					 <a
+					href="<c:url value="/customer/${tempCustomer.id}"></c:url>"><i class="unhide icon"></i>
+					View</a>
 			</tr>
 		</c:forEach>
 	</table>
