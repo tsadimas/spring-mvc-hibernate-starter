@@ -22,8 +22,13 @@
 <body>
 	<nav class="ui fixed menu teal inverted navbar">
 		<a href="" class="brand item">Customers</a> 
-		<a href="${pageContext.request.contextPath}/customer/list" class="item">List All</a>
-		<a href="${pageContext.request.contextPath}/customer/showAddForm" class="item">Add</a>
+		<a href="${pageContext.request.contextPath}/customer/list" class="item">List Customers</a>
+		<a href="${pageContext.request.contextPath}/customer/showAddForm" class="item">Add Customer</a>
+		<a href="${pageContext.request.contextPath}/student/list" class="item">List Students</a>
+		<a href="${pageContext.request.contextPath}/student/showAddForm" class="item">Add Student</a>
+		<a href="${pageContext.request.contextPath}/course/list" class="item">List Courses</a>
+		<a href="${pageContext.request.contextPath}/teacher/list" class="item">List Teachers</a>
+		<a href="${pageContext.request.contextPath}/teacher/showAddForm" class="item">Add Teacher</a>
 	</nav>
 	<!-- end nav -->
 
