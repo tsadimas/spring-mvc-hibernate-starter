@@ -27,6 +27,8 @@
 			</tr>
 		</c:forEach>
 	</table>
+	
+	<a class="ui button" href="${pageContext.request.contextPath}/student/showAddForm" class="item">Add Student</a>
 </div>
 
 <script type="text/javascript">
