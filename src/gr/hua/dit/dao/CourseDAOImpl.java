@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import gr.hua.dit.entity.Course;
+import gr.hua.dit.entity.Teacher;
 
 @Repository
 public class CourseDAOImpl implements CourseDAO {
@@ -69,6 +70,15 @@ public class CourseDAOImpl implements CourseDAO {
 		// delete course
 		currentSession.delete(course);
 
+	}
+
+	@Override
+	public List<Course> getNotTeacherCourses(int teacherId) {
+
+		Session currentSession = sessionFactory.getCurrentSession();
+		List<Course> courses = currentSession.createQuery("from Course c where c.teacher!="+teacherId).getResultList();
+		System.out.println("not teacher courses " + courses);
+		return courses;
 	}
 
 }

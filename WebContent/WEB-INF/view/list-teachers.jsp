@@ -23,9 +23,11 @@
 						<i class="remove user icon"></i> Delete
 					</button> 
 					<a class="ui button" href="<c:url value="/teacher/${tempTeacher.id}"></c:url>"><i
-						class="unhide icon"></i> View</a>
+						class="unhide icon"></i> View/Edit</a>
 					<a class="ui button" href="<c:url value="/course/showAddForm/${tempTeacher.id}"></c:url>"><i
 						class="unhide icon"></i>Create Course</a>
+					<a class="ui button" href="<c:url value="/teacher/assignCourse/${tempTeacher.id}"></c:url>"><i
+						class="unhide icon"></i>Assign Course</a>
 			</tr>
 		</c:forEach>
 	</table>

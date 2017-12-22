@@ -41,4 +41,10 @@ public class CourseServiceImpl implements CourseService {
 		courseDAO.deleteCourse(id);
 	}
 
+	@Override
+	@Transactional
+	public List<Course> getNotTeacherCourses(int teacherId) {
+		return courseDAO.getNotTeacherCourses(teacherId);
+	}
+
 }

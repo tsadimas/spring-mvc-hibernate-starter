@@ -21,9 +21,9 @@
 				<td><button type="submit" id="${tempStudent.id}"
 					name="deleteStudent"><i class="remove user icon"></i>
 					 Delete</button>
-					 <a
+					 <a class="ui button"
 					href="<c:url value="/student/${tempStudent.id}"></c:url>"><i class="unhide icon"></i>
-					View</a>
+					View/Edit</a>
 			</tr>
 		</c:forEach>
 	</table>
