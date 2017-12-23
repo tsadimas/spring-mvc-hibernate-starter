@@ -35,8 +35,8 @@ public class Student {
     @Column(name="email")
     private String email;
     
-    @JsonIgnore
-    @ManyToMany(fetch=FetchType.LAZY,
+    //@JsonIgnore
+    @ManyToMany(fetch=FetchType.EAGER,
             cascade= {CascadeType.PERSIST, CascadeType.MERGE,
                       CascadeType.DETACH, CascadeType.REFRESH})    
     @JoinTable(
