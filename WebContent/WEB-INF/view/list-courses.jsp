@@ -16,7 +16,7 @@
 			<tr>
 				<td>${tempCourse.title}</td>
 				<td>${tempCourse.teacher}</td>
-				<td><button type="submit" id="${tempCourse.id}"
+				<td><button type="submit" id="${tempCourse.id}" class="ui button"
 					name="deleteCourse"><i class="remove user icon"></i>
 					 Delete</button>
 					 <a class="ui button"

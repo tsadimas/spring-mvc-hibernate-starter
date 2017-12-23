@@ -18,7 +18,7 @@
 				<td>${tempStudent.firstName}</td>
 				<td>${tempStudent.lastName}</td>
 				<td>${tempStudent.email}</td>
-				<td><button type="submit" id="${tempStudent.id}"
+				<td><button type="submit" class="ui button" id="${tempStudent.id}"
 					name="deleteStudent"><i class="remove user icon"></i>
 					 Delete</button>
 					 <a class="ui button"
