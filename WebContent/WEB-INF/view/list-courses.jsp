@@ -22,6 +22,8 @@
 					 <a class="ui button"
 					href="<c:url value="/course/${tempCourse.id}"></c:url>"><i class="unhide icon"></i>
 					View/Edit</a>
+					<a class="ui button" href="<c:url value="/student/course/${tempCourse.id}/list"></c:url>"><i
+						class="list icon"></i>List Students</a>
 			</tr>
 		</c:forEach>
 	</table>

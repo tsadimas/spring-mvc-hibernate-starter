@@ -8,6 +8,7 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import gr.hua.dit.entity.Course;
 import gr.hua.dit.entity.Student;
 
 @Repository
@@ -69,6 +70,18 @@ public class StudentDAOImpl implements StudentDAO {
 		// delete student
 		currentSession.delete(student);
 
+	}
+
+	@Override
+	public List<Student> getCourseStudents(int courseId) {
+	Session currentSession = sessionFactory.getCurrentSession();
+		
+		Course course = (Course) currentSession.createQuery("from  Course where id = " +courseId).getSingleResult();
+		System.out.println("course " + course);
+
+		System.out.println("course students " + course.getStudents());
+
+		return course.getStudents();
 	}
 
 }

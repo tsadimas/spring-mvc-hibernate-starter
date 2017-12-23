@@ -44,6 +44,20 @@ public class StudentController {
 		return "list-students";
 	}
 	
+	@GetMapping("/course/{id}/list")
+	public String listCourseStudents(Model model, @PathVariable("id") int id) {
+		
+		// get courses from the service
+		List<Student> students = studentService.getCourseStudents(id);
+		
+		// add the courses to the model
+		model.addAttribute("students",students);
+		
+		// add page title
+		model.addAttribute("pageTitle", "Student List Courses");
+		return "list-students";
+	}
+	
 	@GetMapping("/{id}")
 	public String getStudent(Model model, @PathVariable("id") int id) {
 		// get the student
