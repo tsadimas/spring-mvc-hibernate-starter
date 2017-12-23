@@ -5,10 +5,12 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
+import org.hibernate.transform.Transformers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import gr.hua.dit.entity.Course;
+import gr.hua.dit.entity.Student;
 import gr.hua.dit.entity.Teacher;
 
 @Repository
@@ -79,6 +81,38 @@ public class CourseDAOImpl implements CourseDAO {
 		List<Course> courses = currentSession.createQuery("from Course c where c.teacher!="+teacherId).getResultList();
 		System.out.println("not teacher courses " + courses);
 		return courses;
+	}
+
+	@Override
+	public List<Course> getNotStudentCourses(int studentId) {
+		Session currentSession = sessionFactory.getCurrentSession();
+		String sql="select * from course where course.id not in (select course_id from course_student  inner join student on course_student.student_id = student.id  where student_id = "+studentId +")";
+		System.out.println("SQL " + sql);
+		// FIXME change setresultTransformer to match Hibernate 5.2
+		List<Course> courses = currentSession.createNativeQuery(sql).addScalar("id").addScalar("title").setResultTransformer(Transformers.aliasToBean(Course.class)).getResultList();
+		System.out.println("not student courses " + courses);
+		return courses;
+	}
+
+	@Override
+	public List<Course> getStudentCourses(int studentId) {
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		Student student = (Student) currentSession.createQuery("from  Student where id = " +studentId).getSingleResult();
+		System.out.println("student courses " + student.getCourses());
+
+		return student.getCourses();
+		
+	}
+
+	@Override
+	public List<Course> getTeacherCourses(int teacherId) {
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		Teacher teacher = (Teacher) currentSession.createQuery("from  Teacher where id = " +teacherId).getSingleResult();
+		System.out.println("teacher courses " + teacher.getCourses());
+
+		return teacher.getCourses();
 	}
 
 }

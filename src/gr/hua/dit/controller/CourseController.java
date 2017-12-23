@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import gr.hua.dit.entity.Course;
 import gr.hua.dit.entity.Teacher;
 import gr.hua.dit.service.CourseService;
+import gr.hua.dit.service.StudentService;
 import gr.hua.dit.service.TeacherService;
 
 @Controller
@@ -28,6 +29,8 @@ public class CourseController {
 	@Autowired
 	private TeacherService teacherService;
 
+	@Autowired
+	private StudentService studentService;
 	
 	
 	@GetMapping("/list")
@@ -43,6 +46,35 @@ public class CourseController {
 		model.addAttribute("pageTitle", "List Courses");
 		return "list-courses";
 	}
+	
+	@GetMapping("/student/{id}/list")
+	public String listStudentCourses(Model model, @PathVariable("id") int id) {
+		
+		// get courses from the service
+		List<Course> courses = courseService.getStudentCourses(id);
+		
+		// add the courses to the model
+		model.addAttribute("courses",courses);
+		
+		// add page title
+		model.addAttribute("pageTitle", "Student List Courses");
+		return "list-courses";
+	}
+	
+	@GetMapping("/teacher/{id}/list")
+	public String listTeacherCourses(Model model, @PathVariable("id") int id) {
+		
+		// get courses from the service
+		List<Course> courses = courseService.getTeacherCourses(id);
+		
+		// add the courses to the model
+		model.addAttribute("courses",courses);
+		
+		// add page title
+		model.addAttribute("pageTitle", "Teacher List Courses");
+		return "list-courses";
+	}
+	
 	
 	@GetMapping("/{id}")
 	public String getCourse(Model model, @PathVariable("id") int id) {

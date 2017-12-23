@@ -25,14 +25,17 @@
 					<a class="ui button" href="<c:url value="/teacher/${tempTeacher.id}"></c:url>"><i
 						class="unhide icon"></i> View/Edit</a>
 					<a class="ui button" href="<c:url value="/course/showAddForm/${tempTeacher.id}"></c:url>"><i
-						class="unhide icon"></i>Create Course</a>
+						class="add circle icon"></i>Create Course</a>
 					<a class="ui button" href="<c:url value="/teacher/assignCourse/${tempTeacher.id}"></c:url>"><i
-						class="unhide icon"></i>Assign Course</a>
+						class="add user icon"></i>Assign Course</a>
+					<a class="ui button" href="<c:url value="/course/teacher/${tempTeacher.id}/list"></c:url>"><i
+						class="list icon"></i>List Courses</a>	
 			</tr>
 		</c:forEach>
 	</table>
 	
-		<a class="ui button" href="${pageContext.request.contextPath}/teacher/showAddForm" class="item">Add Teacher</a>
+		<a class="ui button" href="${pageContext.request.contextPath}/teacher/showAddForm" class="item"><i
+						class="add circle icon"></i>Add Teacher</a>
 </div>
 
 <script type="text/javascript">

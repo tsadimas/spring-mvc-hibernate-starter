@@ -14,4 +14,13 @@ public interface CourseService {
 	public void deleteCourse(int id);
 
 	public List<Course> getNotTeacherCourses(int teacherId);
+	
+	public List<Course> getTeacherCourses(int teacherId);
+
+	
+	public List<Course> getNotStudentCourses(int studentId);
+	
+	public List<Course> getStudentCourses(int studentId);
+
+
 }

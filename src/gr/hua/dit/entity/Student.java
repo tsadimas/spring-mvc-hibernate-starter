@@ -35,6 +35,7 @@ public class Student {
     @Column(name="email")
     private String email;
     
+    //@JsonIgnore
     @ManyToMany(fetch=FetchType.EAGER,
             cascade= {CascadeType.PERSIST, CascadeType.MERGE,
                       CascadeType.DETACH, CascadeType.REFRESH})    
@@ -109,7 +110,7 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Student [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + "]";
+        return firstName+ " " + lastName;
     }
     
 

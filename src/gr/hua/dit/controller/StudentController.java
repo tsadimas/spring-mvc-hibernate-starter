@@ -11,8 +11,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import gr.hua.dit.entity.Course;
 import gr.hua.dit.entity.Student;
+import gr.hua.dit.entity.Teacher;
+import gr.hua.dit.service.CourseService;
 import gr.hua.dit.service.StudentService;
 
 @Controller
@@ -22,6 +26,9 @@ public class StudentController {
 	// inject the student service
 	@Autowired
 	private StudentService studentService;
+	
+	@Autowired
+	private CourseService courseService;
 	
 	@GetMapping("/list")
 	public String listStudents(Model model) {
@@ -64,6 +71,27 @@ public class StudentController {
 		studentService.saveStudent(student);
 		
 		return "redirect:/student/list";
+	}
+	
+	
+	@GetMapping("/assignCourse/{id}")
+	public String assignCourse(Model model,  @PathVariable("id") int id) {
+		Student student = studentService.getStudent(id);
+	    List<Course> courses=courseService.getNotStudentCourses(id);
+	    model.addAttribute("courses", courses);
+	    model.addAttribute("student", student);
+		return "student-assign-course";
+	}
+	
+	@PostMapping("/assignCourse/{id}")
+	public String assignCourseToStudent(@PathVariable("id") int id, @RequestParam("courseId") int courseId) {
+		Student student = studentService.getStudent(id);
+		Course course = courseService.getCourse(courseId);
+		List<Course> courses = courseService.getStudentCourses(id);
+		courses.add(course);
+		student.setCourses(courses);
+		studentService.saveStudent(student);
+		return "redirect:/teacher/list";
 	}
 	
 

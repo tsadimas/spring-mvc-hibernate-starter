@@ -124,6 +124,7 @@ public class Course {
     // add a convenience method  to add course
     
     public void addStudent(Student student) {
+    	
         if (students == null) {
             students = new ArrayList<Student>();
         }

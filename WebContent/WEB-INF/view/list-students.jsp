@@ -24,12 +24,18 @@
 					 <a class="ui button"
 					href="<c:url value="/student/${tempStudent.id}"></c:url>"><i class="unhide icon"></i>
 					View/Edit</a>
+					<a class="ui button" href="<c:url value="/student/assignCourse/${tempStudent.id}"></c:url>"><i
+						class="add user icon"></i>Assign Course</a>
+					<a class="ui button" href="<c:url value="/course/student/${tempStudent.id}/list"></c:url>"><i
+						class="list icon"></i>List Courses</a>	
 			</tr>
 		</c:forEach>
 	</table>
 	
-	<a class="ui button" href="${pageContext.request.contextPath}/student/showAddForm" class="item">Add Student</a>
+	<a class="ui button" href="${pageContext.request.contextPath}/student/showAddForm" class="item"><i	class="add circle icon"></i>Add Student</a>
 </div>
+
+
 
 <script type="text/javascript">
 	$("[name='deleteStudent']").click(function() {
