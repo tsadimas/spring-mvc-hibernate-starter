@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import gr.hua.dit.entity.Course;
 import gr.hua.dit.entity.CourseList;
 import gr.hua.dit.service.CourseService;
+import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/api/course")

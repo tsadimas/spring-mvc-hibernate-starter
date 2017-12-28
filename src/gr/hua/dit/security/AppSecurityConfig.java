@@ -13,7 +13,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-	
+
 		// add our users for in memory authentication
 		auth.inMemoryAuthentication().withUser("john").password("{noop}test123").roles("EMPLOYEE");
 		auth.inMemoryAuthentication().withUser("mary").password("{noop}test123").roles("MANAGER");
@@ -23,22 +23,18 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests()
-		.anyRequest().authenticated()
-		.and()
-		.formLogin().loginPage("/login")
-		.loginProcessingUrl("/authUser")
-		.permitAll()
-		.and()
-		.logout().permitAll();
+		http.authorizeRequests().anyRequest().authenticated().and().formLogin().loginPage("/login")
+				.loginProcessingUrl("/authUser").permitAll().and().logout().permitAll();
 	}
 
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-		 web.ignoring()
-	        .antMatchers("/resources/**");
-	}
-	
+		web.ignoring().antMatchers("/resources/**");
 
-	
+		web.ignoring().antMatchers("/api/**");
+
+		web.ignoring().antMatchers("/v2/api-docs", "/swagger-resources/**", "/swagger-ui.html", "/webjars/**");
+
+	}
+
 }
