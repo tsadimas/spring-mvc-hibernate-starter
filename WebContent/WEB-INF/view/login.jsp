@@ -1,4 +1,3 @@
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <div class="ui segment">
 
@@ -6,12 +5,20 @@
 
 
 	<form:form action="${pageContext.request.contextPath}/authUser"
-		method="POST">
+		method="POST" class="ui form">
 		<c:if test="${param.error != null}">
 			<div class="ui negative message">
 				<i class="close icon"></i>
 				<div class="header">Oops!</div>
 				<p>Sorry! Invalid username/password!</p>
+			</div>
+		</c:if>
+		
+		<c:if test="${param.logout != null}">
+			<div class="ui info message">
+				<i class="close icon"></i>
+				<div class="header">Bye!</div>
+				<p>You have been logged out!</p>
 			</div>
 		</c:if>
 		<div class="field">

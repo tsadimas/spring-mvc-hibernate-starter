@@ -28,7 +28,9 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 		.and()
 		.formLogin().loginPage("/login")
 		.loginProcessingUrl("/authUser")
-		.permitAll();
+		.permitAll()
+		.and()
+		.logout().permitAll();
 	}
 
 	@Override

@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <!DOCTYPE html>
 <html>
@@ -20,7 +21,7 @@
 
 </head>
 <body>
-	<nav class="ui fixed menu teal inverted navbar">
+	<nav class="ui menu teal inverted navbar">
 		<a href="" class="brand item">School</a> 
 		<a href="${pageContext.request.contextPath}/student/list" class="item">List Students</a>
 		<a href="${pageContext.request.contextPath}/course/list" class="item">List Courses</a>
@@ -29,3 +30,11 @@
 	<!-- end nav -->
 
 	<div class="ui container">
+	
+	<div class="ui segment">
+	<form:form id="logout" action="${pageContext.request.contextPath}/logout" method="POST" class="ui form">
+		<div class="inline field">
+			<input type="submit" value="Logout" class="ui button" />
+		</div>
+	</form:form>
+	</div>
