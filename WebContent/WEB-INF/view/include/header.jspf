@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
 <!DOCTYPE html>
 <html>
@@ -29,9 +30,15 @@
 		<a href="${pageContext.request.contextPath}/course/list" class="item">List Courses</a>
 		<a href="${pageContext.request.contextPath}/teacher/list" class="item">List Teachers</a>
 		<a href="${pageContext.request.contextPath}/user/list" class="item">List Users</a>
-		<a id="logout-nav" class="item" 	name="logout-nav">
-						<i class="sign out icon"></i> Logout
-					</a> 
+		<sec:authorize access="isAuthenticated()">
+			<div class="item">
+			Hello <b><c:out value="${pageContext.request.remoteUser}" /></b>
+			<sec:authentication property="principal.authorities"/>
+			</div>
+			<div class="item">
+			<a id="logout-nav" class="item" 	name="logout-nav"> <i class="sign out icon"></i> Logout</a>
+			</div>
+		</sec:authorize>
 	</nav>
 	<!-- end nav -->
 

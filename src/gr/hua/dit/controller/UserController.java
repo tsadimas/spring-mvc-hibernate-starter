@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -57,9 +58,10 @@ public class UserController {
 		// save the student using the service
 		userService.save(user);
 		
-		return "redirect:/user/list";
+		return "redirect:/user/assignRole/"+user.getUsername();
 	}
 	
+	@Secured("ROLE_ADMIN")
 	@GetMapping("/assignRole/{username}")
 	public String assignRole(Model model,  @PathVariable("username") String username) {
 		User user = userService.getUser(username);
@@ -71,6 +73,7 @@ public class UserController {
 		return "assign-role";
 	}
 	
+	@Secured("ROLE_ADMIN")
 	@PostMapping("/assignRole/{username}")
 	public String assignRoleToUser(@PathVariable("username") String username, @RequestParam("role") String role) {
 		User user = userService.getUser(username);
