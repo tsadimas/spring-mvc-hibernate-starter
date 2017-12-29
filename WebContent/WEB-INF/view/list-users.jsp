@@ -7,12 +7,15 @@
 	<table class="ui celled  striped table">
 		<thead>
 			<th>Username</th>
+			<th>Actions</th>
 		</thead>
 		<!-- loop over and print our students -->
 		<c:forEach var="tempUser" items="${users}">
 
 			<tr>
 				<td>${tempUser.username}</td>
+				<td><a class="ui button" href="<c:url value="/user/assignRole/${tempUser.username}"></c:url>"><i
+						class="add user icon"></i>Add Role</a></td>
 			</tr>
 		</c:forEach>
 	</table>

@@ -10,4 +10,9 @@ public interface UserService {
 
 	public List<User> getUsers();
 
+	public User getUser(String username);
+	
+	public void saveRole(User user, String role);
+
+
 }
