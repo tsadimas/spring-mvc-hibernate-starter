@@ -43,7 +43,9 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 		.loginProcessingUrl("/authUser")
 		.permitAll()
 		.and()
-		.logout().permitAll();
+		.logout().permitAll()
+		.and()
+	    .exceptionHandling().accessDeniedPage("/403");
 		
 		
 		  
