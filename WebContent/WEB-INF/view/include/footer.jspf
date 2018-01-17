@@ -1,7 +1,11 @@
 
 </div>
 
-
+<sec:authorize access="isAuthenticated()">
+	<div class="ui segment">
+	User: <sec:authentication property="principal.username" />, Role: <sec:authentication property="principal.authorities"/>
+	</div>
+</sec:authorize>
 
 <div class="ui segment">
 <img class="ui centered big image" src="${pageContext.request.contextPath}/resources/img/er.png">
