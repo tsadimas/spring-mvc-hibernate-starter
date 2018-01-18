@@ -14,6 +14,8 @@
 						<option value="${acourse.id}">${acourse.title}</option>
 					</c:forEach>
 				</select>
+				
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 			</div>
 			<div class="field">
 
